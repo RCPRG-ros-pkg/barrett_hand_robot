@@ -36,25 +36,53 @@
     <xacro:macro name="palm" params="prefix parent *origin">
 
         <link name="${prefix}_HandPalmLink" >
-        <inertial>
+          <inertial>
             <origin xyz="0.00035500 -0.00499005 0.04864979" />
             <mass value="0.63352875" />
             <inertia  ixx="0.00102103" ixy="0.00000775"  ixz="-0.00001230"
                                        iyy="0.00080944"  iyz="-0.00014417"
                                                          izz="0.00068788" />
-        </inertial>
-        <visual>
+          </inertial>
+          <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
                     <mesh filename="${homeDirectory}/meshes/palm.stl"/>
             </geometry>
-        </visual>
-            <collision>
+          </visual>
+          <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                    <mesh filename="${homeDirectory}/meshes/palm.stl"/>
+              <mesh filename="${homeDirectory}/meshes/palm.stl"/>
             </geometry>
-            </collision>
+          </collision>
+
+          <self_collision_checking>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+              <convex>
+                <!-- gripper base points -->
+                <point xyz="0.03 0.03 0.0" frame="${prefix}_HandPalmLink"/>
+                <point xyz="-0.03 0.03 0.0" frame="${prefix}_HandPalmLink"/>
+                <point xyz="-0.03 -0.03 0.0" frame="${prefix}_HandPalmLink"/>
+                <point xyz="0.03 -0.03 0.0" frame="${prefix}_HandPalmLink"/>
+
+                <!-- fingers' base links -->
+                <point xyz="0.06 0 0" frame="${prefix}_HandFingerOneKnuckleOneLink"/>
+                <point xyz="0.06 0 0" frame="${prefix}_HandFingerTwoKnuckleOneLink"/>
+                <point xyz="0 -0.06 0.06" frame="${prefix}_HandPalmLink"/>
+
+                <!-- distal fingers' links -->
+                <point xyz="0 0 0" frame="${prefix}_HandFingerOneKnuckleThreeLink"/>
+                <point xyz="0 0 0" frame="${prefix}_HandFingerTwoKnuckleThreeLink"/>
+                <point xyz="0 0 0" frame="${prefix}_HandFingerThreeKnuckleThreeLink"/>
+
+                <point xyz="0.06 0 0" frame="${prefix}_HandFingerOneKnuckleThreeLink"/>
+                <point xyz="0.06 0 0" frame="${prefix}_HandFingerTwoKnuckleThreeLink"/>
+                <point xyz="0.06 0 0" frame="${prefix}_HandFingerThreeKnuckleThreeLink"/>
+              </convex>
+            </geometry>
+          </self_collision_checking>
+
         </link>
 
         <gazebo reference="${prefix}_HandPalmLink">
@@ -73,9 +101,9 @@
 
         <link name="${prefix}_HandFinger${number}KnuckleOneLink">
         <visual>
-            <origin xyz="0 0 0" rpy="${0.5 * PI} 0 -${0.5 * PI}" />
+            <origin xyz="0 0 0.0" rpy="${0.5 * PI} 0 -${0.5 * PI}" />
             <geometry>
-                    <mesh filename="${homeDirectory}/meshes/firstFingerLink.stl"/>
+                <mesh filename="${homeDirectory}/meshes/firstFingerLink.stl"/>
             </geometry>
         </visual>
         <inertial>
@@ -150,7 +178,7 @@
             <origin xyz="${xyz}" rpy="${rpy}"/>
             <axis xyz="0 0 -1"/>
                             <!-- 122 degrees - start orientation of 0.4 degrees-->
-            <limit effort="1" lower="0" upper="${2.12930169 - 0.00698131701}" velocity="3.27"/>
+            <limit effort="1" lower="0" upper="2.443388889" velocity="3.27"/>
             <dynamics damping="0.005" friction="100.0"/>
         </joint>
     </xacro:macro>
@@ -188,15 +216,14 @@
         <gazebo reference="${prefix}_HandFinger${number}KnuckleThreeLink">
           <turnGravityOff>true</turnGravityOff>
         </gazebo>
-
         <joint name="${prefix}_HandFinger${number}KnuckleThreeJoint" type="revolute">
             <parent link="${prefix}_HandFinger${number}KnuckleTwoLink"/>
             <child link="${prefix}_HandFinger${number}KnuckleThreeLink"/>
-                                        <!-- 42 degrees -->
-            <origin xyz="0.07 0 0" rpy="0 0 -0.733038286"/>
+                                        <!-- 39.56 degrees -->
+            <origin xyz="0.07 0 0" rpy="0 0 -0.690452252"/>
             <axis xyz="0 0 -1"/>
                                 <!-- measured max angle is 94.  so upper limit is 94 - start orientation (42 degrees)-->
-            <limit effort="1" lower="0" upper="${1.6406095 - 0.733038286}" velocity="3.27"/>
+            <limit effort="1" lower="0" upper="0.837733333" velocity="3.27"/>
             <dynamics damping="0.005" friction="100.0"/>
         </joint>
     </xacro:macro>
@@ -214,13 +241,14 @@
             <insert_block name="origin"/>
         </xacro:palm>
     
-        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandPalmLink" number="Three" xyz="0 -0.05 0.0801966" rpy="-${0.5 * PI} -0.0429350996 -${0.5 * PI}"/>
+        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandPalmLink" number="Three" xyz="0 -0.05 0.0754" rpy="-${0.5 * PI} 0 -${0.5 * PI}"/>
 
         <xacro:KnuckleOne prefix="${prefix}" number="One" xyz=".02497 0 0.0587966" rpy="0 0 ${0.5 * PI}" axis="0 0 -1"/>
-        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandFingerOneKnuckleOneLink" number="One" xyz=".05 0 0.02140" rpy="-${0.5 * PI} -0.0429350996 0"/>
+        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandFingerOneKnuckleOneLink" number="One" xyz=".05 0 0.0166034" rpy="-${0.5 * PI} 0 0"/>
 
         <xacro:KnuckleOne prefix="${prefix}" number="Two" xyz="-.02497 0 0.0587966" rpy="0 0 ${0.5 * PI}" axis ="0 0 1"/>
-        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandFingerTwoKnuckleOneLink" number="Two" xyz=".05 0 0.02140" rpy="-${0.5 * PI} -0.0429350996 0"/>
+        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandFingerTwoKnuckleOneLink" number="Two" xyz=".05 0 0.0166034" rpy="-${0.5 * PI} 0 0"/>
+<!--        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandFingerTwoKnuckleOneLink" number="Two" xyz=".05 0 0.0166034" rpy="-${0.5 * PI} -0.0429350996 0"/>-->
 
 </xacro:macro>
 
