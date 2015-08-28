@@ -230,7 +230,7 @@
       <self_collision_checking>
         <origin xyz="0.04 -0.01 0.0" rpy="0 1.57075 -0.5"/>
         <geometry>
-          <capsule radius="0.03" length="0.1"/>
+          <capsule radius="0.01" length="0.1"/>
         </geometry>
       </self_collision_checking>
 
