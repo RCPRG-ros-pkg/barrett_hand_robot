@@ -131,6 +131,20 @@
       <insert_block name="origin"/>
       <provideFeedback value="true"/> 
     </joint>
+
+    <link name="${prefix}_HandGripLink" >
+    </link>
+
+    <gazebo reference="${prefix}_HandGripLink">
+      <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+
+    <joint name="${prefix}_HandGripJoint" type="fixed">
+      <parent link="${prefix}_HandPalmLink"/>
+      <child link="${prefix}_HandGripLink"/>
+      <origin rpy="0 0 0" xyz="0 0 0.12"/>
+    </joint>
+
   </xacro:macro>
 
   <xacro:macro name="KnuckleOne" params="prefix number xyz rpy axis">
