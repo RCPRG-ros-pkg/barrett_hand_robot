@@ -31,7 +31,8 @@
 
   <xacro:arg name="collision_model_full" default="true"/>
   <xacro:arg name="collision_model_simplified" default="false"/>
-  <xacro:arg name="collision_model_enlarged" default="false"/>
+  <xacro:arg name="collision_model_enlargement" default="0.0"/>
+  <xacro:arg name="collision_model_no_hands" default="false"/>
 
   <xacro:property name="homeDirectory" value="package://barrett_hand_defs" />
   <xacro:property name="highResModelDirectory" value="${homeDirectory}/meshes/splitModels" />

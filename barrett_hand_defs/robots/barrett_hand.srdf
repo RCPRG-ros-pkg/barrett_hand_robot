@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="standalone_barrett_hand">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="right_arm">
+        <chain base_link="world" tip_link="world_link" />
+    </group>
+    <group name="right_hand">
+        <link name="right_HandPalmLink" />
+        <link name="right_HandFingerOneKnuckleOneLink" />
+        <link name="right_HandFingerOneKnuckleTwoLink" />
+        <link name="right_HandFingerOneKnuckleThreeLink" />
+        <link name="right_HandFingerThreeKnuckleTwoLink" />
+        <link name="right_HandFingerThreeKnuckleThreeLink" />
+        <link name="right_HandFingerTwoKnuckleOneLink" />
+        <link name="right_HandFingerTwoKnuckleTwoLink" />
+        <link name="right_HandFingerTwoKnuckleThreeLink" />
+        <joint name="right_HandFingerOneKnuckleOneJoint" />
+        <joint name="right_HandFingerOneKnuckleTwoJoint" />
+        <joint name="right_HandFingerOneKnuckleThreeJoint" />
+        <joint name="right_HandFingerThreeKnuckleTwoJoint" />
+        <joint name="right_HandFingerThreeKnuckleThreeJoint" />
+        <joint name="right_HandFingerTwoKnuckleOneJoint" />
+        <joint name="right_HandFingerTwoKnuckleTwoJoint" />
+        <joint name="right_HandFingerTwoKnuckleThreeJoint" />
+    </group>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="right_hand" parent_link="world_link" group="right_hand" parent_group="right_arm" />
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="right_HandFingerOneKnuckleOneLink" link2="right_HandFingerOneKnuckleThreeLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerOneKnuckleOneLink" link2="right_HandFingerOneKnuckleTwoLink" reason="Adjacent" />
+    <disable_collisions link1="right_HandFingerOneKnuckleOneLink" link2="right_HandFingerThreeKnuckleThreeLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerOneKnuckleOneLink" link2="right_HandFingerThreeKnuckleTwoLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerOneKnuckleOneLink" link2="right_HandFingerTwoKnuckleOneLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerOneKnuckleOneLink" link2="right_HandFingerTwoKnuckleThreeLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerOneKnuckleOneLink" link2="right_HandFingerTwoKnuckleTwoLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerOneKnuckleOneLink" link2="right_HandPalmLink" reason="Adjacent" />
+    <disable_collisions link1="right_HandFingerOneKnuckleThreeLink" link2="right_HandFingerOneKnuckleTwoLink" reason="Adjacent" />
+    <disable_collisions link1="right_HandFingerOneKnuckleThreeLink" link2="right_HandFingerTwoKnuckleOneLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerOneKnuckleTwoLink" link2="right_HandFingerThreeKnuckleTwoLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerOneKnuckleTwoLink" link2="right_HandFingerTwoKnuckleOneLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerOneKnuckleTwoLink" link2="right_HandFingerTwoKnuckleTwoLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerOneKnuckleTwoLink" link2="right_HandPalmLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerThreeKnuckleThreeLink" link2="right_HandFingerThreeKnuckleTwoLink" reason="Adjacent" />
+    <disable_collisions link1="right_HandFingerThreeKnuckleThreeLink" link2="right_HandFingerTwoKnuckleOneLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerThreeKnuckleThreeLink" link2="right_HandFingerTwoKnuckleTwoLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerThreeKnuckleThreeLink" link2="right_HandPalmLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerThreeKnuckleTwoLink" link2="right_HandFingerTwoKnuckleOneLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerThreeKnuckleTwoLink" link2="right_HandFingerTwoKnuckleTwoLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerThreeKnuckleTwoLink" link2="right_HandPalmLink" reason="Adjacent" />
+    <disable_collisions link1="right_HandFingerTwoKnuckleOneLink" link2="right_HandFingerTwoKnuckleThreeLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerTwoKnuckleOneLink" link2="right_HandFingerTwoKnuckleTwoLink" reason="Adjacent" />
+    <disable_collisions link1="right_HandFingerTwoKnuckleOneLink" link2="right_HandPalmLink" reason="Adjacent" />
+    <disable_collisions link1="right_HandFingerTwoKnuckleThreeLink" link2="right_HandFingerTwoKnuckleTwoLink" reason="Adjacent" />
+    <disable_collisions link1="right_HandFingerTwoKnuckleTwoLink" link2="right_HandPalmLink" reason="Never" />
+</robot>
