@@ -87,22 +87,20 @@
       </xacro:unless>
 
       <!-- collision mesh used for RT self-collision avoidance -->
+<!--
       <self_collision_checking>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
           <convex>
-            <!-- gripper base points -->
             <point xyz="0.03 0.03 0.0" frame="${prefix}_HandPalmLink"/>
             <point xyz="-0.03 0.03 0.0" frame="${prefix}_HandPalmLink"/>
             <point xyz="-0.03 -0.03 0.0" frame="${prefix}_HandPalmLink"/>
             <point xyz="0.03 -0.03 0.0" frame="${prefix}_HandPalmLink"/>
 
-            <!-- fingers' base links -->
             <point xyz="0.06 0 0" frame="${prefix}_HandFingerOneKnuckleOneLink"/>
             <point xyz="0.06 0 0" frame="${prefix}_HandFingerTwoKnuckleOneLink"/>
             <point xyz="0 -0.06 0.06" frame="${prefix}_HandPalmLink"/>
 
-            <!-- distal fingers' links -->
             <point xyz="0 0 0" frame="${prefix}_HandFingerOneKnuckleThreeLink"/>
             <point xyz="0 0 0" frame="${prefix}_HandFingerTwoKnuckleThreeLink"/>
             <point xyz="0 0 0" frame="${prefix}_HandFingerThreeKnuckleThreeLink"/>
@@ -111,6 +109,14 @@
             <point xyz="0.06 0 0" frame="${prefix}_HandFingerTwoKnuckleThreeLink"/>
             <point xyz="0.06 0 0" frame="${prefix}_HandFingerThreeKnuckleThreeLink"/>
           </convex>
+        </geometry>
+      </self_collision_checking>
+-->
+
+      <self_collision_checking>
+        <origin xyz="0.0 0.0 0.04" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="0.06"/>
         </geometry>
       </self_collision_checking>
 
@@ -126,6 +132,20 @@
       <insert_block name="origin"/>
       <provideFeedback value="true"/> 
     </joint>
+
+    <link name="${prefix}_HandGripLink" >
+    </link>
+
+    <gazebo reference="${prefix}_HandGripLink">
+      <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+
+    <joint name="${prefix}_HandGripJoint" type="fixed">
+      <parent link="${prefix}_HandPalmLink"/>
+      <child link="${prefix}_HandGripLink"/>
+      <origin rpy="0 0 0" xyz="0 0 0.12"/>
+    </joint>
+
   </xacro:macro>
 
   <xacro:macro name="KnuckleOne" params="prefix number xyz rpy axis">
@@ -221,6 +241,13 @@
         </collision>
       </xacro:if>
       </xacro:unless>
+
+      <self_collision_checking>
+        <origin xyz="0.04 -0.01 0.0" rpy="0 1.57075 -0.5"/>
+        <geometry>
+          <capsule radius="0.01" length="0.1"/>
+        </geometry>
+      </self_collision_checking>
 
     </link>
 
