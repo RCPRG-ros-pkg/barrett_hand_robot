@@ -179,7 +179,7 @@
       <!-- collision mesh used for grasp planning -->
       <xacro:if value="$(arg collision_model_full)">
         <collision>
-          <origin xyz="0 0 0" rpy="${0.5 * PI} 0 -${0.5 * PI}" />
+          <origin xyz="0 0 -0.0045" rpy="${0.5 * PI} 0 -${0.5 * PI}" />
           <geometry>
             <mesh filename="${homeDirectory}/meshes/firstFingerLink.stl"/>
           </geometry>
