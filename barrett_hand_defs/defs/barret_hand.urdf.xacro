@@ -33,21 +33,20 @@
   <xacro:arg name="collision_model_simplified" default="false"/>
   <xacro:arg name="collision_model_enlargement" default="0.0"/>
   <xacro:arg name="collision_model_no_hands" default="false"/>
-  <xacro:arg name="optoforce" default="false" />
 
   <xacro:property name="homeDirectory" value="package://barrett_hand_defs" />
   <xacro:property name="highResModelDirectory" value="${homeDirectory}/meshes/splitModels" />
   <xacro:property name="PI" value="3.1415926535897931" />
 
   <property name="collision_model_enlargement" value="$(arg collision_model_enlargement)" />
-
+<!--
   <xacro:if value="$(arg optoforce)">
     <property name="optoforce" value="$(arg optoforce)" />
   </xacro:if>
   <xacro:unless value="$(arg optoforce)">
     <property name="optoforce" value="" />
   </xacro:unless>
-
+-->
   <xacro:macro name="palm" params="prefix parent *origin">
 
     <link name="${prefix}_HandPalmLink" >
@@ -281,13 +280,18 @@
     </joint>
   </xacro:macro>
 
-  <xacro:macro name="KnuckleThree" params="prefix number">
+  <xacro:macro name="KnuckleThree" params="prefix number with_optoforce">
 
     <link name="${prefix}_HandFinger${number}KnuckleThreeLink">
       <visual>
         <origin xyz="0 0 0" rpy="0 ${0.5 * PI} 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/meshes/KnuckleThree${optoforce}Link.dae"/>
+          <xacro:if value="${with_optoforce}">
+            <mesh filename="${homeDirectory}/meshes/KnuckleThreeOptoforceLink.dae"/>
+          </xacro:if>
+          <xacro:unless value="${with_optoforce}">
+            <mesh filename="${homeDirectory}/meshes/KnuckleThreeLink.dae"/>
+          </xacro:unless>
         </geometry>
       </visual>
       <inertial>
@@ -313,7 +317,12 @@
         <collision>
           <origin xyz="0 0 0" rpy="0 ${0.5 * PI} 0" />
           <geometry>
-            <mesh filename="${homeDirectory}/meshes/thirdFinger${optoforce}Link.stl"/>
+            <xacro:if value="${with_optoforce}">
+              <mesh filename="${homeDirectory}/meshes/thirdFingerOptoforceLink.stl"/>
+            </xacro:if>
+            <xacro:unless value="${with_optoforce}">
+              <mesh filename="${homeDirectory}/meshes/thirdFingerLink.stl"/>
+            </xacro:unless>
           </geometry>
         </collision>
       </xacro:if>
@@ -342,8 +351,7 @@
       <dynamics damping="0.05"/>
     </joint>
 
-
-    <xacro:if value="$(arg optoforce)">
+    <xacro:if value="${with_optoforce}">
         <link name="${prefix}_HandFinger${number}KnuckleThreeOptoforceBase" >
         </link>
         <joint name="${prefix}_HandFinger${number}KnuckleThreeOptoforceBaseJoint" type="fixed">
@@ -360,27 +368,26 @@
           <origin rpy="0 ${PI/2} 0" xyz="0.005 0 0"/>
         </joint>
     </xacro:if>
-
   </xacro:macro>
 
-  <xacro:macro name="fingers" params="parent prefix number xyz rpy">
+  <xacro:macro name="fingers" params="parent prefix number xyz rpy with_optoforce">
     <xacro:KnuckleTwo parent="${parent}" prefix="${prefix}" number="${number}" xyz="${xyz}" rpy="${rpy}" />
-    <xacro:KnuckleThree prefix="${prefix}" number="${number}"/>
+    <xacro:KnuckleThree prefix="${prefix}" number="${number}" with_optoforce="${with_optoforce}"/>
   </xacro:macro>
 
-    <xacro:macro name="barret_hand" params="prefix parent *origin">
+    <xacro:macro name="barret_hand" params="prefix parent *origin with_optoforce">
 
         <xacro:palm prefix="${prefix}" parent="${parent}">
             <insert_block name="origin"/>
         </xacro:palm>
     
-        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandPalmLink" number="Three" xyz="0 -0.05 0.0754" rpy="-${0.5 * PI} 0 -${0.5 * PI}"/>
+        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandPalmLink" number="Three" xyz="0 -0.05 0.0754" rpy="-${0.5 * PI} 0 -${0.5 * PI}" with_optoforce="${with_optoforce}"/>
 
         <xacro:KnuckleOne prefix="${prefix}" number="One" xyz=".02497 0 0.0587966" rpy="0 0 ${0.5 * PI}" axis="0 0 -1"/>
-        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandFingerOneKnuckleOneLink" number="One" xyz=".05 0 0.0166034" rpy="-${0.5 * PI} 0 0"/>
+        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandFingerOneKnuckleOneLink" number="One" xyz=".05 0 0.0166034" rpy="-${0.5 * PI} 0 0" with_optoforce="${with_optoforce}"/>
 
         <xacro:KnuckleOne prefix="${prefix}" number="Two" xyz="-.02497 0 0.0587966" rpy="0 0 ${0.5 * PI}" axis ="0 0 1"/>
-        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandFingerTwoKnuckleOneLink" number="Two" xyz=".05 0 0.0166034" rpy="-${0.5 * PI} 0 0"/>
+        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandFingerTwoKnuckleOneLink" number="Two" xyz=".05 0 0.0166034" rpy="-${0.5 * PI} 0 0" with_optoforce="${with_optoforce}"/>
 <!--        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandFingerTwoKnuckleOneLink" number="Two" xyz=".05 0 0.0166034" rpy="-${0.5 * PI} -0.0429350996 0"/>-->
 
 </xacro:macro>

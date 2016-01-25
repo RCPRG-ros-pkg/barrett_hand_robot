@@ -2,6 +2,8 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro"
        name="standalone_barrett_hand">
 
+  <xacro:arg name="with_optoforce" default="false" />
+
   <xacro:include filename="$(find barrett_hand_defs)/defs/barret_hand.urdf.xacro"/>
   <xacro:include filename="$(find barrett_hand_defs)/defs/materials.xml"/>
 
@@ -38,7 +40,7 @@
 -->
   </link>
   
-  <xacro:barret_hand prefix="right" parent="world_link">
+  <xacro:barret_hand prefix="right" parent="world_link" with_optoforce="$(arg with_optoforce)">
     <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
   </xacro:barret_hand>
 
