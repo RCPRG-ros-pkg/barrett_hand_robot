@@ -39,14 +39,7 @@
   <xacro:property name="PI" value="3.1415926535897931" />
 
   <property name="collision_model_enlargement" value="$(arg collision_model_enlargement)" />
-<!--
-  <xacro:if value="$(arg optoforce)">
-    <property name="optoforce" value="$(arg optoforce)" />
-  </xacro:if>
-  <xacro:unless value="$(arg optoforce)">
-    <property name="optoforce" value="" />
-  </xacro:unless>
--->
+
   <xacro:macro name="palm" params="prefix parent *origin">
 
     <link name="${prefix}_HandPalmLink" >
