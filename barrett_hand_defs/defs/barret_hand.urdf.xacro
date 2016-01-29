@@ -308,7 +308,7 @@
       <!-- collision mesh used for grasp planning -->
       <xacro:if value="$(arg collision_model_full)">
         <collision>
-          <origin xyz="0 0 0" rpy="0 ${0.5 * PI} 0" />
+          <origin xyz="0 0 0" rpy="0 0 0" />
           <geometry>
             <xacro:if value="${with_optoforce}">
               <mesh filename="${homeDirectory}/meshes/thirdFingerOptoforceLink.stl"/>
