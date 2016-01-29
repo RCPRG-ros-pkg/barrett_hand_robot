@@ -280,7 +280,7 @@
         <origin xyz="0 0 0" rpy="0 ${0.5 * PI} 0" />
         <geometry>
           <xacro:if value="${with_optoforce}">
-            <mesh filename="${homeDirectory}/meshes/KnuckleThreeOptoforceLink.dae"/>
+            <mesh filename="${homeDirectory}/meshes/KnuckleThreeOptoforceBaseLink.dae"/>
           </xacro:if>
           <xacro:unless value="${with_optoforce}">
             <mesh filename="${homeDirectory}/meshes/KnuckleThreeLink.dae"/>
@@ -311,7 +311,7 @@
           <origin xyz="0 0 0" rpy="0 0 0" />
           <geometry>
             <xacro:if value="${with_optoforce}">
-              <mesh filename="${homeDirectory}/meshes/thirdFingerOptoforceLink.stl"/>
+              <mesh filename="${homeDirectory}/meshes/thirdFingerOptoforceBaseLink.stl"/>
             </xacro:if>
             <xacro:unless value="${with_optoforce}">
               <mesh filename="${homeDirectory}/meshes/thirdFingerLink.stl"/>
@@ -346,6 +346,54 @@
 
     <xacro:if value="${with_optoforce}">
         <link name="${prefix}_HandFinger${number}KnuckleThreeOptoforceBase" >
+          <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+              <sphere radius="0.01"/>
+            </geometry>
+          </visual>
+        </link>
+        <joint name="${prefix}_HandFinger${number}KnuckleThreeOptoforceBaseJoint" type="fixed">
+          <parent link="${prefix}_HandFinger${number}KnuckleThreeLink"/>
+          <child link="${prefix}_HandFinger${number}KnuckleThreeOptoforceBase"/>
+          <origin rpy="0 ${PI/2} -${35.0 * PI / 180.0}" xyz="0.04486 -0.00685 0"/>
+        </joint>
+
+        <gazebo reference="${prefix}_HandFinger${number}KnuckleThreeOptoforceBase">
+          <turnGravityOff>true</turnGravityOff>
+        </gazebo>
+
+        <link name="${prefix}_HandFinger${number}KnuckleThreeOptoforceSensor" >
+          <inertial>
+            <origin xyz="0 0 0" />
+            <mass value="0.003421781" />
+            <inertia  ixx="0.000000287" ixy="0.000000091"  ixz="-0.000000007"
+                                         iyy="0.000001329"  iyz="-0.000000002"
+                                                             izz="0.000001214" />
+          </inertial>
+          <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+              <sphere radius="0.01"/>
+            </geometry>
+          </collision>
+        </link>
+        <joint name="${prefix}_HandFinger${number}KnuckleThreeOptoforceJoint" type="prismatic">
+          <parent link="${prefix}_HandFinger${number}KnuckleThreeLink"/>
+          <child link="${prefix}_HandFinger${number}KnuckleThreeOptoforceSensor"/>
+          <origin rpy="0 ${PI/2} -${35.0 * PI / 180.0}" xyz="0.04486 -0.00685 0"/>
+
+          <axis xyz="0 0 1"/>
+          <limit effort="2" lower="-0.005" upper="0.005" velocity="0.1"/>
+          <dynamics damping="0.1"/>
+        </joint>
+
+        <gazebo reference="${prefix}_HandFinger${number}KnuckleThreeOptoforceSensor">
+          <turnGravityOff>true</turnGravityOff>
+        </gazebo>
+
+<!--
+        <link name="${prefix}_HandFinger${number}KnuckleThreeOptoforceBase" >
         </link>
         <joint name="${prefix}_HandFinger${number}KnuckleThreeOptoforceBaseJoint" type="fixed">
           <parent link="${prefix}_HandFinger${number}KnuckleThreeLink"/>
@@ -360,6 +408,8 @@
           <child link="${prefix}_HandFinger${number}KnuckleThreeOptoforce"/>
           <origin rpy="0 ${PI/2} 0" xyz="0.005 0 0"/>
         </joint>
+-->
+
     </xacro:if>
   </xacro:macro>
 
