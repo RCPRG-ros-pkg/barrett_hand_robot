@@ -287,12 +287,20 @@
           </xacro:unless>
         </geometry>
       </visual>
-      <inertial>
+<!--      <inertial>
         <origin xyz="0.01970974 0.00182016 0.00020041" />
         <mass value="0.03421781" />
         <inertia  ixx="0.00000287" ixy="0.00000091"  ixz="-0.00000007"
                                    iyy="0.00001329"  iyz="-0.00000002"
                                                      izz="0.00001214" />
+      </inertial>
+-->
+      <inertial>
+        <origin xyz=".031720 .001070 -.000586" />
+        <mass value="0.057957" />
+        <inertia  ixx="0.00000461" ixy="0.00000003"  ixz="0.00000164"
+                                   iyy="0.00003590"  iyz="0.00000004"
+                                                     izz="0.00003682" />
       </inertial>
 
       <xacro:unless value="$(arg collision_model_no_hands)">
@@ -391,7 +399,6 @@
         <gazebo reference="${prefix}_HandFinger${number}KnuckleThreeOptoforceSensor">
           <turnGravityOff>false</turnGravityOff>
         </gazebo>
-
 <!--
         <link name="${prefix}_HandFinger${number}KnuckleThreeOptoforceBase" >
         </link>
@@ -409,7 +416,6 @@
           <origin rpy="0 ${PI/2} 0" xyz="0.005 0 0"/>
         </joint>
 -->
-
     </xacro:if>
   </xacro:macro>
 
