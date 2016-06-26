@@ -201,6 +201,9 @@
       <limit effort="1" lower="0" upper="${PI}" velocity="3.27"/>
       <dynamics damping="0.1"/>
     </joint>
+    <gazebo reference="${prefix}_HandFinger${number}KnuckleOneJoint">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
   </xacro:macro>
 
 
@@ -271,6 +274,9 @@
       <limit effort="1" lower="0" upper="2.443388889" velocity="3.27"/>
       <dynamics damping="0.05"/>
     </joint>
+    <gazebo reference="${prefix}_HandFinger${number}KnuckleTwoJoint">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
   </xacro:macro>
 
   <xacro:macro name="KnuckleThree" params="prefix number with_optoforce">
@@ -351,6 +357,9 @@
       <limit effort="1" lower="0" upper="0.837733333" velocity="3.27"/>
       <dynamics damping="0.05"/>
     </joint>
+    <gazebo reference="${prefix}_HandFinger${number}KnuckleThreeJoint">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
 
     <xacro:if value="${with_optoforce}">
         <link name="${prefix}_HandFinger${number}KnuckleThreeOptoforceBase" >
@@ -395,6 +404,10 @@
           <limit effort="2" lower="-0.005" upper="0.005" velocity="0.1"/>
           <dynamics damping="0.1"/>
         </joint>
+
+        <gazebo reference="${prefix}_HandFinger${number}KnuckleThreeOptoforceJoint">
+          <provideFeedback>true</provideFeedback>
+        </gazebo>
 
         <gazebo reference="${prefix}_HandFinger${number}KnuckleThreeOptoforceSensor">
           <turnGravityOff>false</turnGravityOff>
