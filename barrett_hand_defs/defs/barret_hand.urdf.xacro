@@ -368,6 +368,9 @@
             <geometry>
               <sphere radius="0.01"/>
             </geometry>
+            <material name="material_optoforce_ball">
+              <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
           </visual>
         </link>
         <joint name="${prefix}_HandFinger${number}KnuckleThreeOptoforceBaseJoint" type="fixed">
