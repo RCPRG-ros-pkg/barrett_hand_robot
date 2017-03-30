@@ -127,6 +127,7 @@
 
     <gazebo reference="${prefix}_HandPalmLink">
       <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
     </gazebo>
 
     <joint name="${prefix}_HandPalmJoint" type="fixed">
@@ -141,6 +142,7 @@
 
     <gazebo reference="${prefix}_HandGripLink">
       <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
     </gazebo>
 
     <joint name="${prefix}_HandGripJoint" type="fixed">
@@ -195,6 +197,7 @@
 
     <gazebo reference="${prefix}_HandFinger${number}KnuckleOneLink">
       <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
     </gazebo>
 
     <joint name="${prefix}_HandFinger${number}KnuckleOneJoint" type="revolute">
@@ -268,6 +271,7 @@
 
     <gazebo reference="${prefix}_HandFinger${number}KnuckleTwoLink">
       <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
     </gazebo>
 
     <joint name="${prefix}_HandFinger${number}KnuckleTwoJoint" type="revolute">
@@ -352,6 +356,7 @@
 
     <gazebo reference="${prefix}_HandFinger${number}KnuckleThreeLink">
       <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
     </gazebo>
     <joint name="${prefix}_HandFinger${number}KnuckleThreeJoint" type="revolute">
       <parent link="${prefix}_HandFinger${number}KnuckleTwoLink"/>
@@ -418,6 +423,7 @@
 
         <gazebo reference="${prefix}_HandFinger${number}KnuckleThreeOptoforceSensor">
           <turnGravityOff>false</turnGravityOff>
+          <selfCollide>true</selfCollide>
         </gazebo>
 <!--
         <link name="${prefix}_HandFinger${number}KnuckleThreeOptoforceBase" >
