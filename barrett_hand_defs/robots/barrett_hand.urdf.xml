@@ -5,7 +5,7 @@
   <xacro:arg name="with_optoforce" default="false" />
 
   <xacro:include filename="$(find barrett_hand_defs)/defs/barret_hand.urdf.xacro"/>
-  <xacro:include filename="$(find barrett_hand_defs)/defs/materials.xml"/>
+<!--  <xacro:include filename="$(find barrett_hand_defs)/defs/materials.xml"/>-->
 
    <link name="world" />
 
@@ -45,3 +45,4 @@
   </xacro:barret_hand>
 
 </robot>
+
