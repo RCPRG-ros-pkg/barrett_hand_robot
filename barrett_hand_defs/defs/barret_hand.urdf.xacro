@@ -69,12 +69,28 @@
           <geometry>
             <cylinder radius="${0.045+collision_model_enlargement}" length="0.09"/>
           </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1.0</mu>
+                  <mu2>1.0</mu2>
+                </ode>
+              </friction>
+            </surface>
         </collision>
         <collision>
           <origin xyz="0 -0.035 0.07" rpy="0 0 0" />
           <geometry>
             <box size="${0.025+collision_model_enlargement*2} ${0.08+collision_model_enlargement*2} ${0.05+collision_model_enlargement*2}"/>
           </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1.0</mu>
+                  <mu2>1.0</mu2>
+                </ode>
+              </friction>
+            </surface>
         </collision>
       </xacro:if>
 
@@ -85,6 +101,14 @@
           <geometry>
             <mesh filename="${homeDirectory}/meshes/palm.stl"/>
           </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1.0</mu>
+                  <mu2>1.0</mu2>
+                </ode>
+              </friction>
+            </surface>
         </collision>
       </xacro:if>
       </xacro:unless>
@@ -179,6 +203,14 @@
           <geometry>
             <box size="${0.08+collision_model_enlargement*2} ${0.025+collision_model_enlargement*2} ${0.05+collision_model_enlargement*2}"/>
           </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1.0</mu>
+                  <mu2>1.0</mu2>
+                </ode>
+              </friction>
+            </surface>
         </collision>
       </xacro:if>
 
@@ -189,6 +221,14 @@
           <geometry>
             <mesh filename="${homeDirectory}/meshes/firstFingerLink.stl"/>
           </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1.0</mu>
+                  <mu2>1.0</mu2>
+                </ode>
+              </friction>
+            </surface>
         </collision>
       </xacro:if>
       </xacro:unless>
@@ -240,6 +280,14 @@
           <geometry>
             <box size="${0.07+collision_model_enlargement*2} ${0.03+collision_model_enlargement*2} ${0.022+collision_model_enlargement*2}"/>
           </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1.0</mu>
+                  <mu2>1.0</mu2>
+                </ode>
+              </friction>
+            </surface>
         </collision>
       </xacro:if>
       <!-- collision mesh used for grasp planning -->
@@ -249,6 +297,14 @@
           <geometry>
             <mesh filename="${homeDirectory}/meshes/secondFingerLink.stl"/>
           </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1.0</mu>
+                  <mu2>1.0</mu2>
+                </ode>
+              </friction>
+            </surface>
         </collision>
       </xacro:if>
       </xacro:unless>
@@ -327,6 +383,14 @@
           <geometry>
             <box size="${0.07+collision_model_enlargement*2} ${0.02+collision_model_enlargement*2} ${0.022+collision_model_enlargement*2}"/>
           </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1.0</mu>
+                  <mu2>1.0</mu2>
+                </ode>
+              </friction>
+            </surface>
         </collision>
       </xacro:if>
       <!-- collision mesh used for grasp planning -->
@@ -341,6 +405,14 @@
               <mesh filename="${homeDirectory}/meshes/thirdFingerLink.stl"/>
             </xacro:unless>
           </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1.0</mu>
+                  <mu2>1.0</mu2>
+                </ode>
+              </friction>
+            </surface>
         </collision>
       </xacro:if>
       </xacro:unless>
@@ -405,6 +477,14 @@
             <geometry>
               <sphere radius="0.01"/>
             </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1.0</mu>
+                  <mu2>1.0</mu2>
+                </ode>
+              </friction>
+            </surface>
           </collision>
         </link>
         <joint name="${prefix}_HandFinger${number}KnuckleThreeOptoforceJoint" type="prismatic">
