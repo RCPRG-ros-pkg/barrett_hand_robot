@@ -141,7 +141,7 @@
 -->
 
       <self_collision_checking>
-        <origin xyz="0.0 0.0 0.02" rpy="0 0 0"/>
+        <origin xyz="0.0 0.0 0.03" rpy="0 0 0"/>
         <geometry>
           <sphere radius="0.06"/>
         </geometry>
@@ -312,7 +312,7 @@
       <self_collision_checking>
         <origin xyz="0.03 0.0 0.0" rpy="0 1.57075 0"/>
         <geometry>
-          <capsule radius="0.01" length="0.06"/>
+          <capsule radius="0.015" length="0.06"/>
         </geometry>
       </self_collision_checking>
 <!--
@@ -420,7 +420,7 @@
       <self_collision_checking>
         <origin xyz="0.025 0.0 0.0" rpy="0 1.57075 0"/>
         <geometry>
-          <capsule radius="0.0075" length="0.05"/>
+          <capsule radius="0.015" length="0.05"/>
         </geometry>
       </self_collision_checking>
 
