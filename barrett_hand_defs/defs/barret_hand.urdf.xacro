@@ -54,9 +54,9 @@
       </inertial>
 
       <visual>
-        <origin xyz="0 0 0" rpy="${PI} 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/meshes/HandPalmLink.dae"/>
+          <mesh filename="${homeDirectory}/meshes/palm.stl"/>
         </geometry>
         <material name="bh_HandGrey"/>
       </visual>
@@ -181,9 +181,9 @@
 
     <link name="${prefix}_HandFinger${number}KnuckleOneLink">
       <visual>
-        <origin xyz="0 0 -0.017" rpy="${0.5 * PI} 0 -${0.5 * PI}" />
+        <origin xyz="0 0 -0.0045" rpy="${0.5 * PI} 0 -${0.5 * PI}" />
         <geometry>
-          <mesh filename="${homeDirectory}/meshes/KnuckleOneLink.dae"/>
+          <mesh filename="${homeDirectory}/meshes/firstFingerLink.stl"/>
         </geometry>
         <material name="bh_HandGrey"/>
       </visual>
@@ -260,7 +260,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="${PI} ${0.5 * PI} 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/meshes/KnuckleTwoLink.dae"/>
+          <mesh filename="${homeDirectory}/meshes/secondFingerLink.stl"/>
         </geometry>
         <material name="bh_HandGrey"/>
       </visual>
@@ -348,13 +348,13 @@
 
     <link name="${prefix}_HandFinger${number}KnuckleThreeLink">
       <visual>
-        <origin xyz="0 0 0" rpy="0 ${0.5 * PI} 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <xacro:if value="${with_optoforce}">
-            <mesh filename="${homeDirectory}/meshes/KnuckleThreeOptoforceBaseLink.dae"/>
+            <mesh filename="${homeDirectory}/meshes/thirdFingerOptoforceBaseLink.stl"/>
           </xacro:if>
           <xacro:unless value="${with_optoforce}">
-            <mesh filename="${homeDirectory}/meshes/KnuckleThreeLink.dae"/>
+            <mesh filename="${homeDirectory}/meshes/thirdFingerLink.stl"/>
           </xacro:unless>
         </geometry>
         <material name="bh_HandGrey"/>
