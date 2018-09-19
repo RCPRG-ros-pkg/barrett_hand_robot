@@ -93,7 +93,7 @@
             <parent link="${parent}"/>
             <child link="${prefix}_HandPalmLink"/>
             <insert_block name="origin"/>
-            <provideFeedback value="true"/> 
+            <provideFeedback value="true"/>
         </joint>
     </xacro:macro>
 
@@ -150,7 +150,7 @@
                 </geometry>
             </visual>
             <inertial>
-                <origin xyz=".031720 .001070 -.000586" />
+                <origin xyz="0.031720 0.001070 -0.000586" />
                 <mass value="0.057957" />
                 <inertia  ixx="0.00000461" ixy="0.00000003"  ixz="0.00000164"
                                            iyy="0.00003590"  iyz="0.00000004"
@@ -199,7 +199,7 @@
                                        iyy="0.00001329"  iyz="-0.00000002"
                                                          izz="0.00001214" />
           </inertial>
-        
+
           <collision>
             <origin xyz="0 0 0" rpy="0 ${0.5 * PI} 0" />
             <geometry>
@@ -210,7 +210,7 @@
             <kp  value="1000000.0" />
             <kd  value="1.0" />
           </collision>
-            
+
         </link>
 
         <gazebo reference="${prefix}_HandFinger${number}KnuckleThreeLink">
@@ -240,15 +240,15 @@
         <xacro:palm prefix="${prefix}" parent="${parent}">
             <insert_block name="origin"/>
         </xacro:palm>
-    
+
         <xacro:fingers prefix="${prefix}" parent="${prefix}_HandPalmLink" number="Three" xyz="0 -0.05 0.0754" rpy="-${0.5 * PI} 0 -${0.5 * PI}"/>
 
-        <xacro:KnuckleOne prefix="${prefix}" number="One" xyz=".02497 0 0.0587966" rpy="0 0 ${0.5 * PI}" axis="0 0 -1"/>
-        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandFingerOneKnuckleOneLink" number="One" xyz=".05 0 0.0166034" rpy="-${0.5 * PI} 0 0"/>
+        <xacro:KnuckleOne prefix="${prefix}" number="One" xyz="0.02497 0 0.0587966" rpy="0 0 ${0.5 * PI}" axis="0 0 -1"/>
+        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandFingerOneKnuckleOneLink" number="One" xyz="0.05 0 0.0166034" rpy="-${0.5 * PI} 0 0"/>
 
-        <xacro:KnuckleOne prefix="${prefix}" number="Two" xyz="-.02497 0 0.0587966" rpy="0 0 ${0.5 * PI}" axis ="0 0 1"/>
-        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandFingerTwoKnuckleOneLink" number="Two" xyz=".05 0 0.0166034" rpy="-${0.5 * PI} 0 0"/>
-<!--        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandFingerTwoKnuckleOneLink" number="Two" xyz=".05 0 0.0166034" rpy="-${0.5 * PI} -0.0429350996 0"/>-->
+        <xacro:KnuckleOne prefix="${prefix}" number="Two" xyz="-0.02497 0 0.0587966" rpy="0 0 ${0.5 * PI}" axis ="0 0 1"/>
+        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandFingerTwoKnuckleOneLink" number="Two" xyz="0.05 0 0.0166034" rpy="-${0.5 * PI} 0 0"/>
+<!--        <xacro:fingers prefix="${prefix}" parent="${prefix}_HandFingerTwoKnuckleOneLink" number="Two" xyz="0.05 0 0.0166034" rpy="-${0.5 * PI} -0.0429350996 0"/>-->
 
 </xacro:macro>
 
