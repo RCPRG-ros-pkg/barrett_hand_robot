@@ -437,25 +437,6 @@
     </gazebo>
 
     <xacro:if value="${with_optoforce}">
-        <link name="${prefix}_HandFinger${number}KnuckleThreeOptoforceBase" >
-          <visual>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-              <sphere radius="0.01"/>
-            </geometry>
-            <material name="bh_Black"/>
-          </visual>
-        </link>
-        <joint name="${prefix}_HandFinger${number}KnuckleThreeOptoforceBaseJoint" type="fixed">
-          <parent link="${prefix}_HandFinger${number}KnuckleThreeLink"/>
-          <child link="${prefix}_HandFinger${number}KnuckleThreeOptoforceBase"/>
-          <origin rpy="0 ${PI/2} -${35.0 * PI / 180.0}" xyz="0.04486 -0.00685 0"/>
-        </joint>
-
-        <gazebo reference="${prefix}_HandFinger${number}KnuckleThreeOptoforceBase">
-          <turnGravityOff>false</turnGravityOff>
-        </gazebo>
-
         <link name="${prefix}_HandFinger${number}KnuckleThreeOptoforceSensor" >
           <inertial>
             <origin xyz="0 0 0" />
@@ -464,6 +445,13 @@
                                          iyy="0.000001329"  iyz="-0.000000002"
                                                              izz="0.000001214" />
           </inertial>
+          <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+              <sphere radius="0.01"/>
+            </geometry>
+            <material name="bh_Black"/>
+          </visual>
           <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
@@ -497,23 +485,6 @@
           <turnGravityOff>false</turnGravityOff>
           <selfCollide>true</selfCollide>
         </gazebo>
-<!--
-        <link name="${prefix}_HandFinger${number}KnuckleThreeOptoforceBase" >
-        </link>
-        <joint name="${prefix}_HandFinger${number}KnuckleThreeOptoforceBaseJoint" type="fixed">
-          <parent link="${prefix}_HandFinger${number}KnuckleThreeLink"/>
-          <child link="${prefix}_HandFinger${number}KnuckleThreeOptoforceBase"/>
-          <origin rpy="0 0 -${35.0 * PI / 180.0}" xyz="0.0415 -0.0045 0"/>
-        </joint>
-
-        <link name="${prefix}_HandFinger${number}KnuckleThreeOptoforce" >
-        </link>
-        <joint name="${prefix}_HandFinger${number}KnuckleThreeOptoforceJoint" type="fixed">
-          <parent link="${prefix}_HandFinger${number}KnuckleThreeOptoforceBase"/>
-          <child link="${prefix}_HandFinger${number}KnuckleThreeOptoforce"/>
-          <origin rpy="0 ${PI/2} 0" xyz="0.005 0 0"/>
-        </joint>
--->
     </xacro:if>
   </xacro:macro>
 
