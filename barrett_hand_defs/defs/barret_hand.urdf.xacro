@@ -160,6 +160,13 @@
     </joint>
 
     <link name="${prefix}_HandGripLink" >
+      <inertial>
+        <origin xyz="0.0 0.0 0.0" />
+        <mass value="0.005" />
+        <inertia  ixx="0.00000041" ixy="0.00000000"  ixz="0.00000016"
+                                   iyy="0.00000359"  iyz="0.00000000"
+                                                     izz="0.00000368" />
+      </inertial>
     </link>
 
     <gazebo reference="${prefix}_HandGripLink">
