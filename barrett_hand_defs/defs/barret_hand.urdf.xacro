@@ -168,6 +168,57 @@
     </link>
 
 
+
+    <joint name="${prefix}_HandPalmMarkerCJoint" type="fixed">
+      <parent link="${prefix}_HandPalmLink"/>
+      <child link="${prefix}_HandPalmMarkerCLink"/>
+      <origin xyz="-0.0445 0.0 0.0255" rpy="0 ${-PI/2} 0" />
+    </joint>
+
+    <link name="${prefix}_HandPalmMarkerCLink" >
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <sphere radius="0.01"/>
+        </geometry>
+      </visual>
+    </link>
+
+
+    <joint name="${prefix}_HandPalmMarkerBJoint" type="fixed">
+      <parent link="${prefix}_HandPalmLink"/>
+      <child link="${prefix}_HandPalmMarkerBLink"/>
+      <origin xyz="0.0 0.0445 0.0255" rpy="${-PI/2} 0 0" />
+    </joint>
+
+    <link name="${prefix}_HandPalmMarkerBLink" >
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <sphere radius="0.01"/>
+        </geometry>
+      </visual>
+    </link>
+
+
+
+    <joint name="${prefix}_HandPalmMarkerDJoint" type="fixed">
+      <parent link="${prefix}_HandPalmLink"/>
+      <child link="${prefix}_HandPalmMarkerDLink"/>
+      <origin xyz="0.0 -0.0445 0.0255" rpy="${PI/2} 0 0" />
+    </joint>
+
+    <link name="${prefix}_HandPalmMarkerDLink" >
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <sphere radius="0.01"/>
+        </geometry>
+      </visual>
+    </link>
+
+
+
     <joint name="${prefix}_HandPalmJoint" type="fixed">
       <parent link="${parent}"/>
       <child link="${prefix}_HandPalmLink"/>
