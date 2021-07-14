@@ -152,6 +152,22 @@
       <selfCollide>true</selfCollide>
     </gazebo>
 
+    <joint name="${prefix}_HandPalmMarkerAJoint" type="fixed">
+      <parent link="${prefix}_HandPalmLink"/>
+      <child link="${prefix}_HandPalmMarkerALink"/>
+      <origin xyz="0.0445 0.0 0.0255" rpy="0 ${PI/2} 0" />
+    </joint>
+
+    <link name="${prefix}_HandPalmMarkerALink" >
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <sphere radius="0.01"/>
+        </geometry>
+      </visual>
+    </link>
+
+
     <joint name="${prefix}_HandPalmJoint" type="fixed">
       <parent link="${parent}"/>
       <child link="${prefix}_HandPalmLink"/>
