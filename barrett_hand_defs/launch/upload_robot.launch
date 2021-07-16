@@ -2,5 +2,5 @@
 <launch>
   <!-- send two_lwr.urdf.xml to param server -->
   <param name="robot_description" command="$(find xacro)/xacro.py '$(find barrett_hand_defs)/robots/barrett_hand.urdf.xml'" />
-  <param name="robot_semantic_description" command="$(find xacro)/xacro.py '$(find barrett_hand_defs)/robots/barrett_hand.srdf'" />
+  <param name="robot_description_semantic" command="$(find xacro)/xacro.py '$(find barrett_hand_defs)/robots/barrett_hand.srdf'" />
 </launch>

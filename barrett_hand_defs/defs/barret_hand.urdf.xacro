@@ -66,32 +66,28 @@
       <!-- collision mesh used for whole arm motion planning -->
       <xacro:if value="$(arg collision_model_simplified)">
         <collision>
-          <origin xyz="0 0 0.045" rpy="0 0 0" />
+          <origin xyz="0 0 0.029" rpy="0 0 0"/>
           <geometry>
-            <cylinder radius="${0.045+collision_model_enlargement}" length="0.09"/>
+            <sphere radius="0.049"/>
           </geometry>
-            <surface>
-              <friction>
-                <ode>
-                  <mu>1.0</mu>
-                  <mu2>1.0</mu2>
-                </ode>
-              </friction>
-            </surface>
         </collision>
         <collision>
-          <origin xyz="0 -0.035 0.07" rpy="0 0 0" />
+          <origin xyz="0 0 0.0578880161047" rpy="0 0 0"/>
           <geometry>
-            <box size="${0.025+collision_model_enlargement*2} ${0.08+collision_model_enlargement*2} ${0.05+collision_model_enlargement*2}"/>
+            <box size="0.0905260443687 0.0546207651496 0.0420634746552"/>
           </geometry>
-            <surface>
-              <friction>
-                <ode>
-                  <mu>1.0</mu>
-                  <mu2>1.0</mu2>
-                </ode>
-              </friction>
-            </surface>
+        </collision>
+        <collision>
+          <origin xyz="0 -0.0385280400515 0.0572689175606" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.0275810360909 0.0546207651496 0.0339374542236"/>
+          </geometry>
+        </collision>
+        <collision>
+          <origin xyz="0 -0.0487826019526 0.0744814276695" rpy="0 0 0"/>
+          <geometry>
+            <sphere radius="0.0194399058819"/>
+          </geometry>
         </collision>
       </xacro:if>
 
@@ -158,15 +154,7 @@
       <origin xyz="0.0445 0.0 0.0255" rpy="0 ${PI/2} 0" />
     </joint>
 
-    <link name="${prefix}_HandPalmMarkerALink" >
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <sphere radius="0.01"/>
-        </geometry>
-      </visual>
-    </link>
-
+    <link name="${prefix}_HandPalmMarkerALink" />
 
 
     <joint name="${prefix}_HandPalmMarkerCJoint" type="fixed">
@@ -175,15 +163,7 @@
       <origin xyz="-0.0445 0.0 0.0255" rpy="0 ${-PI/2} 0" />
     </joint>
 
-    <link name="${prefix}_HandPalmMarkerCLink" >
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <sphere radius="0.01"/>
-        </geometry>
-      </visual>
-    </link>
-
+    <link name="${prefix}_HandPalmMarkerCLink" />
 
     <joint name="${prefix}_HandPalmMarkerBJoint" type="fixed">
       <parent link="${prefix}_HandPalmLink"/>
@@ -191,16 +171,7 @@
       <origin xyz="0.0 0.0445 0.0255" rpy="${-PI/2} 0 0" />
     </joint>
 
-    <link name="${prefix}_HandPalmMarkerBLink" >
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <sphere radius="0.01"/>
-        </geometry>
-      </visual>
-    </link>
-
-
+    <link name="${prefix}_HandPalmMarkerBLink" />
 
     <joint name="${prefix}_HandPalmMarkerDJoint" type="fixed">
       <parent link="${prefix}_HandPalmLink"/>
@@ -208,15 +179,7 @@
       <origin xyz="0.0 -0.0445 0.0255" rpy="${PI/2} 0 0" />
     </joint>
 
-    <link name="${prefix}_HandPalmMarkerDLink" >
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <sphere radius="0.01"/>
-        </geometry>
-      </visual>
-    </link>
-
+    <link name="${prefix}_HandPalmMarkerDLink" />
 
 
     <joint name="${prefix}_HandPalmJoint" type="fixed">
@@ -269,18 +232,16 @@
       <!-- collision mesh used for whole arm motion planning -->
       <xacro:if value="$(arg collision_model_simplified)">
         <collision>
-          <origin xyz="0.03 0 0.005" rpy="0 0 0" />
+          <origin xyz="0.0270798802376 0 0.00195854902267" rpy="0 0 0"/>
           <geometry>
-            <box size="${0.08+collision_model_enlargement*2} ${0.025+collision_model_enlargement*2} ${0.05+collision_model_enlargement*2}"/>
+            <box size="0.0752255320549 0.0278776362538 0.0362581014633"/>
           </geometry>
-            <surface>
-              <friction>
-                <ode>
-                  <mu>1.0</mu>
-                  <mu2>1.0</mu2>
-                </ode>
-              </friction>
-            </surface>
+        </collision>
+        <collision>
+          <origin xyz="0.0493242815137 0 0.0150546580553" rpy="0 0 0"/>
+          <geometry>
+            <sphere radius="0.0196040868759"/>
+          </geometry>
         </collision>
       </xacro:if>
 
@@ -343,18 +304,10 @@
       <!-- collision mesh used for whole arm motion planning -->
       <xacro:if value="$(arg collision_model_simplified)">
         <collision>
-          <origin xyz="0.03 0 0" rpy="0 0 0" />
+          <origin xyz="0.0455318503082 0 0" rpy="0 0 0.0424077153578"/>
           <geometry>
-            <box size="${0.07+collision_model_enlargement*2} ${0.03+collision_model_enlargement*2} ${0.022+collision_model_enlargement*2}"/>
+            <box size="0.0572708845139 0.0259905532002 0.0224001407623"/>
           </geometry>
-            <surface>
-              <friction>
-                <ode>
-                  <mu>1.0</mu>
-                  <mu2>1.0</mu2>
-                </ode>
-              </friction>
-            </surface>
         </collision>
       </xacro:if>
       <!-- collision mesh used for grasp planning -->
@@ -450,19 +403,18 @@
       <!-- collision mesh used for whole arm motion planning -->
       <xacro:if value="$(arg collision_model_simplified)">
         <collision>
-          <origin xyz="0.025 0 0" rpy="0 0 0" />
+          <origin xyz="0.0220463573933 0 0" rpy="0 0 0"/>
           <geometry>
-            <box size="${0.07+collision_model_enlargement*2} ${0.02+collision_model_enlargement*2} ${0.022+collision_model_enlargement*2}"/>
+            <box size="0.0456312298775 0.0218328088522 0.0227420330048"/>
           </geometry>
-            <surface>
-              <friction>
-                <ode>
-                  <mu>1.0</mu>
-                  <mu2>1.0</mu2>
-                </ode>
-              </friction>
-            </surface>
         </collision>
+        <collision>
+          <origin xyz="0.046044960618 0.001 0" rpy="0 0 0"/>
+          <geometry>
+            <sphere radius="0.012090086937"/>
+          </geometry>
+        </collision>
+
       </xacro:if>
       <!-- collision mesh used for grasp planning -->
       <xacro:if value="$(arg collision_model_full)">
