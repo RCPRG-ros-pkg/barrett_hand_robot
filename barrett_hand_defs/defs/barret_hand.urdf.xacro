@@ -154,7 +154,13 @@
       <origin xyz="0.0445 0.0 0.0255" rpy="0 ${PI/2} 0" />
     </joint>
 
-    <link name="${prefix}_HandPalmMarkerALink" />
+    <link name="${prefix}_HandPalmMarkerALink">
+      <inertial>
+        <mass value="0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+    </link>
 
 
     <joint name="${prefix}_HandPalmMarkerCJoint" type="fixed">
@@ -163,7 +169,13 @@
       <origin xyz="-0.0445 0.0 0.0255" rpy="0 ${-PI/2} 0" />
     </joint>
 
-    <link name="${prefix}_HandPalmMarkerCLink" />
+    <link name="${prefix}_HandPalmMarkerCLink">
+      <inertial>
+        <mass value="0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+    </link>
 
     <joint name="${prefix}_HandPalmMarkerBJoint" type="fixed">
       <parent link="${prefix}_HandPalmLink"/>
@@ -171,7 +183,13 @@
       <origin xyz="0.0 0.0445 0.0255" rpy="${-PI/2} 0 0" />
     </joint>
 
-    <link name="${prefix}_HandPalmMarkerBLink" />
+    <link name="${prefix}_HandPalmMarkerBLink">
+      <inertial>
+        <mass value="0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+    </link>
 
     <joint name="${prefix}_HandPalmMarkerDJoint" type="fixed">
       <parent link="${prefix}_HandPalmLink"/>
@@ -179,7 +197,13 @@
       <origin xyz="0.0 -0.0445 0.0255" rpy="${PI/2} 0 0" />
     </joint>
 
-    <link name="${prefix}_HandPalmMarkerDLink" />
+    <link name="${prefix}_HandPalmMarkerDLink">
+      <inertial>
+        <mass value="0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+    </link>
 
 
     <joint name="${prefix}_HandPalmJoint" type="fixed">
