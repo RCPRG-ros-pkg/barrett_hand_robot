@@ -41,7 +41,7 @@
   <xacro:property name="highResModelDirectory" value="${homeDirectory}/meshes/splitModels" />
   <xacro:property name="PI" value="3.1415926535897931" />
 
-  <property name="collision_model_enlargement" value="$(arg collision_model_enlargement)" />
+  <xacro:property name="collision_model_enlargement" value="$(arg collision_model_enlargement)" />
 
   <xacro:macro name="palm" params="prefix parent *origin">
 
@@ -209,7 +209,7 @@
     <joint name="${prefix}_HandPalmJoint" type="fixed">
       <parent link="${parent}"/>
       <child link="${prefix}_HandPalmLink"/>
-      <insert_block name="origin"/>
+      <xacro:insert_block name="origin"/>
       <provideFeedback value="true"/>
     </joint>
 
@@ -556,7 +556,7 @@
 
   <xacro:macro name="barret_hand" params="prefix parent *origin with_optoforce">
     <xacro:palm prefix="${prefix}" parent="${parent}">
-      <insert_block name="origin"/>
+      <xacro:insert_block name="origin"/>
     </xacro:palm>
 
     <xacro:fingers prefix="${prefix}" parent="${prefix}_HandPalmLink" number="Three" xyz="0 -0.05 0.0754" rpy="-${0.5 * PI} 0 -${0.5 * PI}" with_optoforce="${with_optoforce}"/>
