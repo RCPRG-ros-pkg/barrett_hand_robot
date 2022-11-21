@@ -30,7 +30,7 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:include filename="$(find barrett_hand_defs)/defs/materials.xml"/>
+  <!--<xacro:include filename="$(find barrett_hand_defs)/defs/materials.xml"/>-->
 
   <xacro:arg name="collision_model_full" default="true"/>
   <xacro:arg name="collision_model_simplified" default="false"/>
@@ -59,7 +59,9 @@
         <geometry>
           <mesh filename="${homeDirectory}/meshes/palm.stl"/>
         </geometry>
-        <material name="bh_HandGrey"/>
+        <material name="Blue" >
+          <color rgba="0.2 0.2 0.9 1.0"/>
+        </material>
       </visual>
 
       <xacro:unless value="$(arg collision_model_no_hands)">
@@ -146,6 +148,7 @@
     <gazebo reference="${prefix}_HandPalmLink">
       <turnGravityOff>false</turnGravityOff>
       <selfCollide>true</selfCollide>
+      <material>Gazebo/Blue</material>
     </gazebo>
 
     <joint name="${prefix}_HandPalmMarkerAJoint" type="fixed">
@@ -242,7 +245,9 @@
         <geometry>
           <mesh filename="${homeDirectory}/meshes/firstFingerLink.stl"/>
         </geometry>
-        <material name="bh_HandGrey"/>
+        <material name="LightBlue" >
+          <color rgba="0.5 0.5 1.0 1.0"/>
+        </material>
       </visual>
       <inertial>
         <origin xyz="0.03201666 -0.00086502 0.00890075" />
@@ -292,6 +297,7 @@
     <gazebo reference="${prefix}_HandFinger${number}KnuckleOneLink">
       <turnGravityOff>false</turnGravityOff>
       <selfCollide>true</selfCollide>
+      <material>Gazebo/Grey</material>
     </gazebo>
 
     <joint name="${prefix}_HandFinger${number}KnuckleOneJoint" type="revolute">
@@ -314,7 +320,9 @@
         <geometry>
           <mesh filename="${homeDirectory}/meshes/secondFingerLink.stl"/>
         </geometry>
-        <material name="bh_HandGrey"/>
+        <material name="LightBlue" >
+          <color rgba="0.5 0.5 1.0 1.0"/>
+        </material>
       </visual>
       <inertial>
         <origin xyz="0.031720 0.001070 -0.000586" />
@@ -376,6 +384,7 @@
     <gazebo reference="${prefix}_HandFinger${number}KnuckleTwoLink">
       <turnGravityOff>false</turnGravityOff>
       <selfCollide>true</selfCollide>
+      <material>Gazebo/Grey</material>
     </gazebo>
 
     <joint name="${prefix}_HandFinger${number}KnuckleTwoJoint" type="revolute">
@@ -405,7 +414,9 @@
             <mesh filename="${homeDirectory}/meshes/thirdFingerLink.stl"/>
           </xacro:unless>
         </geometry>
-        <material name="bh_HandGrey"/>
+        <material name="LightBlue" >
+          <color rgba="0.5 0.5 1.0 1.0"/>
+        </material>
       </visual>
 <!--      <inertial>
         <origin xyz="0.01970974 0.00182016 0.00020041" />
@@ -481,6 +492,7 @@
     <gazebo reference="${prefix}_HandFinger${number}KnuckleThreeLink">
       <turnGravityOff>false</turnGravityOff>
       <selfCollide>true</selfCollide>
+      <material>Gazebo/Grey</material>
     </gazebo>
     <joint name="${prefix}_HandFinger${number}KnuckleThreeJoint" type="revolute">
       <parent link="${prefix}_HandFinger${number}KnuckleTwoLink"/>
